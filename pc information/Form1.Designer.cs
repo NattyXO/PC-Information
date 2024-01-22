@@ -94,17 +94,19 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
+            this.lblManufacturer = new System.Windows.Forms.Label();
+            this.lblMonitor = new System.Windows.Forms.Label();
+            this.lblChipType = new System.Windows.Forms.Label();
             this.lblgraphicsCardName = new System.Windows.Forms.Label();
-            this.lblgraphicsCardMemory = new System.Windows.Forms.Label();
+            this.lblGraphicsTotalMemory = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
+            this.lblCurrentDisplayMode = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -800,12 +802,14 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lblCurrentDisplayMode);
+            this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.label47);
-            this.panel4.Controls.Add(this.label49);
-            this.panel4.Controls.Add(this.label50);
-            this.panel4.Controls.Add(this.label52);
+            this.panel4.Controls.Add(this.lblManufacturer);
+            this.panel4.Controls.Add(this.lblMonitor);
+            this.panel4.Controls.Add(this.lblChipType);
             this.panel4.Controls.Add(this.lblgraphicsCardName);
-            this.panel4.Controls.Add(this.lblgraphicsCardMemory);
+            this.panel4.Controls.Add(this.lblGraphicsTotalMemory);
             this.panel4.Controls.Add(this.label57);
             this.panel4.Controls.Add(this.label58);
             this.panel4.Controls.Add(this.label60);
@@ -820,122 +824,142 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(169, 150);
+            this.label47.Location = new System.Drawing.Point(149, 110);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(41, 13);
             this.label47.TabIndex = 72;
             this.label47.Text = "label31";
             // 
-            // label49
+            // lblManufacturer
             // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(169, 123);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(41, 13);
-            this.label49.TabIndex = 71;
-            this.label49.Text = "label32";
+            this.lblManufacturer.AutoSize = true;
+            this.lblManufacturer.Location = new System.Drawing.Point(149, 38);
+            this.lblManufacturer.Name = "lblManufacturer";
+            this.lblManufacturer.Size = new System.Drawing.Size(41, 13);
+            this.lblManufacturer.TabIndex = 71;
+            this.lblManufacturer.Text = "label32";
             // 
-            // label50
+            // lblMonitor
             // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(169, 96);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(41, 13);
-            this.label50.TabIndex = 70;
-            this.label50.Text = "label27";
+            this.lblMonitor.AutoSize = true;
+            this.lblMonitor.Location = new System.Drawing.Point(149, 158);
+            this.lblMonitor.Name = "lblMonitor";
+            this.lblMonitor.Size = new System.Drawing.Size(41, 13);
+            this.lblMonitor.TabIndex = 70;
+            this.lblMonitor.Text = "label27";
             // 
-            // label52
+            // lblChipType
             // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(169, 69);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(41, 13);
-            this.label52.TabIndex = 69;
-            this.label52.Text = "label28";
+            this.lblChipType.AutoSize = true;
+            this.lblChipType.Location = new System.Drawing.Point(149, 62);
+            this.lblChipType.Name = "lblChipType";
+            this.lblChipType.Size = new System.Drawing.Size(41, 13);
+            this.lblChipType.TabIndex = 69;
+            this.lblChipType.Text = "label28";
             // 
             // lblgraphicsCardName
             // 
             this.lblgraphicsCardName.AutoSize = true;
-            this.lblgraphicsCardName.Location = new System.Drawing.Point(169, 42);
+            this.lblgraphicsCardName.Location = new System.Drawing.Point(149, 14);
             this.lblgraphicsCardName.Name = "lblgraphicsCardName";
             this.lblgraphicsCardName.Size = new System.Drawing.Size(41, 13);
             this.lblgraphicsCardName.TabIndex = 68;
             this.lblgraphicsCardName.Text = "label26";
             // 
-            // lblgraphicsCardMemory
+            // lblGraphicsTotalMemory
             // 
-            this.lblgraphicsCardMemory.AutoSize = true;
-            this.lblgraphicsCardMemory.Location = new System.Drawing.Point(169, 15);
-            this.lblgraphicsCardMemory.Name = "lblgraphicsCardMemory";
-            this.lblgraphicsCardMemory.Size = new System.Drawing.Size(41, 13);
-            this.lblgraphicsCardMemory.TabIndex = 49;
-            this.lblgraphicsCardMemory.Text = "label24";
+            this.lblGraphicsTotalMemory.AutoSize = true;
+            this.lblGraphicsTotalMemory.Location = new System.Drawing.Point(149, 86);
+            this.lblGraphicsTotalMemory.Name = "lblGraphicsTotalMemory";
+            this.lblGraphicsTotalMemory.Size = new System.Drawing.Size(41, 13);
+            this.lblGraphicsTotalMemory.TabIndex = 49;
+            this.lblGraphicsTotalMemory.Text = "label24";
             // 
             // label57
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label57.ForeColor = System.Drawing.Color.Black;
-            this.label57.Location = new System.Drawing.Point(122, 69);
+            this.label57.Location = new System.Drawing.Point(85, 62);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(42, 13);
+            this.label57.Size = new System.Drawing.Size(58, 13);
             this.label57.TabIndex = 46;
-            this.label57.Text = "Version";
+            this.label57.Text = "Chip Type:";
             // 
             // label58
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label58.ForeColor = System.Drawing.Color.Black;
-            this.label58.Location = new System.Drawing.Point(20, 15);
+            this.label58.Location = new System.Drawing.Point(30, 86);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(144, 13);
+            this.label58.Size = new System.Drawing.Size(113, 13);
             this.label58.TabIndex = 43;
-            this.label58.Text = "Total Graphics Card Memory:";
+            this.label58.Text = "Approx. Total Memory:";
             // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.Black;
-            this.label60.Location = new System.Drawing.Point(56, 42);
+            this.label60.Location = new System.Drawing.Point(105, 14);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(108, 13);
+            this.label60.Size = new System.Drawing.Size(38, 13);
             this.label60.TabIndex = 45;
-            this.label60.Text = "Graphics Card Name:";
+            this.label60.Text = "Name:";
             // 
             // label62
             // 
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label62.ForeColor = System.Drawing.Color.Black;
-            this.label62.Location = new System.Drawing.Point(71, 96);
+            this.label62.Location = new System.Drawing.Point(98, 158);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(93, 13);
+            this.label62.Size = new System.Drawing.Size(45, 13);
             this.label62.TabIndex = 47;
-            this.label62.Text = "Operating System:";
+            this.label62.Text = "Monitor:";
             // 
             // label63
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label63.ForeColor = System.Drawing.Color.Black;
-            this.label63.Location = new System.Drawing.Point(30, 123);
+            this.label63.Location = new System.Drawing.Point(70, 38);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(134, 13);
+            this.label63.Size = new System.Drawing.Size(73, 13);
             this.label63.TabIndex = 44;
-            this.label63.Text = "Operating System Platform:";
+            this.label63.Text = "Manufacturer:";
             // 
             // label64
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label64.ForeColor = System.Drawing.Color.Black;
-            this.label64.Location = new System.Drawing.Point(88, 150);
+            this.label64.Location = new System.Drawing.Point(19, 110);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(76, 13);
+            this.label64.Size = new System.Drawing.Size(124, 13);
             this.label64.TabIndex = 61;
-            this.label64.Text = "System Model:";
+            this.label64.Text = "Display Memory (VRAM):";
+            // 
+            // lblCurrentDisplayMode
+            // 
+            this.lblCurrentDisplayMode.AutoSize = true;
+            this.lblCurrentDisplayMode.Location = new System.Drawing.Point(149, 134);
+            this.lblCurrentDisplayMode.Name = "lblCurrentDisplayMode";
+            this.lblCurrentDisplayMode.Size = new System.Drawing.Size(41, 13);
+            this.lblCurrentDisplayMode.TabIndex = 74;
+            this.lblCurrentDisplayMode.Text = "label27";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(32, 134);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 13);
+            this.label19.TabIndex = 73;
+            this.label19.Text = "Current Display Mode:";
             // 
             // Form1
             // 
@@ -1038,17 +1062,19 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label lblManufacturer;
+        private System.Windows.Forms.Label lblMonitor;
+        private System.Windows.Forms.Label lblChipType;
         private System.Windows.Forms.Label lblgraphicsCardName;
-        private System.Windows.Forms.Label lblgraphicsCardMemory;
+        private System.Windows.Forms.Label lblGraphicsTotalMemory;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label lblCurrentDisplayMode;
+        private System.Windows.Forms.Label label19;
     }
 }
 

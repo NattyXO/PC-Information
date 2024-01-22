@@ -215,12 +215,12 @@ namespace pc_information
                             // Try to parse the values, and if successful, update UI elements
                             if (ulong.TryParse(graphicsCardMemoryStr, out ulong graphicsCardMemory))
                             {
-                                lblgraphicsCardMemory.Text = $"{graphicsCardMemory / (1024 * 1024)} MB";
+                                lblGraphicsTotalMemory.Text = $"{graphicsCardMemory / (1024 * 1024)} MB";
                             }
                             else
                             {
                                 // Handle the case where parsing fails
-                                lblgraphicsCardMemory.Text = "N/A";
+                                lblGraphicsTotalMemory.Text = "N/A";
                             }
 
                             lblgraphicsCardName.Text = graphicsCardName;
@@ -228,7 +228,7 @@ namespace pc_information
                         else
                         {
                             // Handle the case where properties are null
-                            lblgraphicsCardMemory.Text = "N/A";
+                            lblGraphicsTotalMemory.Text = "N/A";
                             lblgraphicsCardName.Text = "N/A";
                         }
                     }
