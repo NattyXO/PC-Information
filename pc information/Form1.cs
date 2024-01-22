@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Management;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace pc_information
 {
@@ -24,62 +25,72 @@ namespace pc_information
         {
             btnOS.Enabled = false;
             btnProcess.Enabled = false;
+            getInfo();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            txtNumberOfCores.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            textBox7.Text = "";
-            textBox8.Text = "";
-            btnProcess.Text = "?";
-            btnOS.Text = "?";
-            txtavailablePhysicalMemory.Text = "";
-            txtavailableVirtualMemory.Text = "";
-            txtbaseboardManufacturer.Text = "";
-            txtBiosMode.Text = "";
-            txtBiosVersion.Text = "";
-            txtgraphicsCardMemory.Text = "";
-            txtgraphicsCardName.Text = "";
-            txtinstalledPhysicalMemory.Text = "";
-            txtpageFileSpace.Text = "";
-            txtprocessor.Text = "";
-            txtSystemModel.Text = "";
-            txttotalVirtualMemory.Text = "";
-            txtMaxClockSpeed.Text = "";
-            txtNumberOfCores.Text = "";
-            txtNumberOfLogicalProcessors.Text = "";
+           
         }
-
-        private void btnGetInfo_Click(object sender, EventArgs e)
+        public void getInfo()
         {
-            textBox4.Enabled = true;
-            textBox5.Enabled = true;
 
+            try
+            {
+                // Retrieve operating system information
+                ManagementObjectSearcher searcher1 = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
+                ManagementObjectCollection osCollection = searcher1.Get();
+                foreach (ManagementObject os in osCollection)
+                {
+                    lblOperatingSystem.Text = $"{os["Caption"]} {os["Version"]}";
+                }
+
+                // Retrieve BIOS information
+                searcher1 = new ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+                ManagementObjectCollection biosCollection = searcher1.Get();
+                foreach (ManagementObject bios in biosCollection)
+                {
+                    lblBIOS.Text = $"{bios["Version"]}";
+                }
+
+                // Retrieve DirectX version from the registry
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\DirectX"))
+                {
+                    if (key != null)
+                    {
+                        object directXVersion = key.GetValue("Version");
+                        if (directXVersion != null)
+                        {
+                            lblDirectXVersion.Text = $"{directXVersion.ToString()}";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             String q1 = Environment.MachineName; // Computer Name
-            textBox1.Text = q1;
+            lblComputerName.Text = q1;
 
             String q2 = Environment.UserName; // User Name 
-            textBox2.Text = Convert.ToString(q2);
+            lblUserName.Text = Convert.ToString(q2);
 
             bool q5 = Environment.Is64BitOperatingSystem; // Is you system 64 Bit OS
-            textBox4.Text = Convert.ToString(q5);
-            if (textBox4.Text == "True")
+            lblBitOS.Text = Convert.ToString(q5);
+            if (lblBitOS.Text == "True")
             {
                 btnOS.Text = "✔";
-            }else
+            }
+            else
             {
                 btnOS.Text = "✕";
             }
 
             bool q6 = Environment.Is64BitOperatingSystem; // Is your systemm 64 Bit Process
-            textBox5.Text = Convert.ToString(q6);
-            if (textBox5.Text == "True")
+            lblBitProcess.Text = Convert.ToString(q6);
+            if (lblBitProcess.Text == "True")
             {
                 btnProcess.Text = "✔";
             }
@@ -89,15 +100,12 @@ namespace pc_information
             }
 
             String q8 = (Environment.OSVersion.ToString()); // version in word 
-            textBox6.Text = q8;
+            lblVersion.Text = q8;
 
 
             String q9 = Environment.OSVersion.Platform.ToString(); // System Platform
-            textBox7.Text = q9;
+            lbloperatingSystemPlatform.Text = q9;
 
-
-            string q10 = Environment.OSVersion.Platform.ToString(); // System Platform
-            textBox8.Text = q10;
 
             // Retrieve system model using ManagementObjectSearcher
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
@@ -106,40 +114,7 @@ namespace pc_information
             foreach (ManagementObject obj in collection)
             {
                 string systemModel = obj["Model"].ToString();
-                txtSystemModel.Text = systemModel;
-
-                try
-                {
-                    // BIOS information
-                    PropertyData biosVersionProperty = obj.Properties["BIOSVersion"];
-                    PropertyData biosModeProperty = obj.Properties["BIOSMode"];
-
-                    string biosVersion = "N/A";
-                    string biosMode = "N/A";
-
-                    // Check if the properties exist before trying to access them
-                    if (biosVersionProperty != null && biosModeProperty != null)
-                    {
-                        // Check if the values are not null and assign them to the strings
-                        if (biosVersionProperty.Value != null)
-                            biosVersion = biosVersionProperty.Value.ToString();
-
-                        if (biosModeProperty.Value != null)
-                            biosMode = biosModeProperty.Value.ToString();
-                    }
-
-                    // Update your UI elements with biosVersion and biosMode as needed
-                    // For example:
-                    txtBiosVersion.Text = biosVersion;
-                    txtBiosMode.Text = biosMode;
-                }
-                catch (Exception ex)
-                {
-                    // Log or handle the exception here
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                    // You might want to log the exception details to a file or another logging mechanism.
-                    // Optionally, you can show an error message to the user or take other appropriate actions.
-                }
+                lblSystemModel.Text = systemModel;
 
                 // Memory information
                 ManagementObjectSearcher memorySearcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
@@ -151,12 +126,12 @@ namespace pc_information
                     ulong freePhysicalMemory = Convert.ToUInt64(memory["FreePhysicalMemory"]);
                     ulong totalVirtualMemory = Convert.ToUInt64(memory["TotalVirtualMemorySize"]);
                     ulong availableVirtualMemory = Convert.ToUInt64(memory["FreeVirtualMemory"]);
-                    
-                    txtinstalledPhysicalMemory.Text = $"{totalPhysicalMemory / (1024 * 1024)} GB"; // Convert bytes to megabytes
-                    txtavailablePhysicalMemory.Text = $"{freePhysicalMemory / (1024 * 1024)} GB";
-                    txttotalVirtualMemory.Text = $"{totalVirtualMemory / (1024 * 1024)} GB";
-                    txtavailableVirtualMemory.Text = $"{availableVirtualMemory / (1024 * 1024)} GB";
-                   
+
+                   lblinstalledPhysicalMemory.Text = $"{totalPhysicalMemory / (1024 * 1024)} GB"; // Convert bytes to megabytes
+                    lblavailablePhysicalMemory.Text = $"{freePhysicalMemory / (1024 * 1024)} GB";
+                    lbltotalVirtualMemory.Text = $"{totalVirtualMemory / (1024 * 1024)} GB";
+                    lblavailableVirtualMemory.Text = $"{availableVirtualMemory / (1024 * 1024)} GB";
+
                 }
 
                 // Get information about the page file on disk
@@ -172,12 +147,12 @@ namespace pc_information
                     double pageFileSizeInGB = (double)pageFileSizeInBytes / (1024 * 1024 * 1024);
 
                     // Display the page file size
-                    txtpageFileSpace.Text = $"{pageFileSizeInGB:F2} GB";
+                    lblpageFileSpace.Text = $"{pageFileSizeInGB:F2} GB";
                 }
                 else
                 {
                     // Handle the case where the page file does not exist
-                    txtpageFileSpace.Text = "Page file not found";
+                    lblpageFileSpace.Text = "Page file not found";
                 }
 
 
@@ -208,16 +183,16 @@ namespace pc_information
 
                         // Update your UI element with the processor information
                         // For example:
-                        txtprocessor.Text = processorInfo;
-                        txtMaxClockSpeed.Text = maxClockSpeed;
-                        txtNumberOfLogicalProcessors.Text = numberOfLogicalProcessors;
-                        txtNumberOfCores.Text = numberOfCores;
+                        lblprocessor.Text = processorInfo;
+                        lblMaxClockSpeed.Text = maxClockSpeed;
+                        lblNumberOfLogicalProcessors.Text = numberOfLogicalProcessors;
+                        lblNumberOfCores.Text = numberOfCores;
                         break; // Assuming you only want information from the first processor
                     }
                 }
 
 
-                txtbaseboardManufacturer.Text = baseboardManufacturer;
+                lblBaseBoardManufacture.Text = baseboardManufacturer;
 
                 // Graphics card information
                 ManagementObjectSearcher gpuSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
@@ -240,27 +215,26 @@ namespace pc_information
                             // Try to parse the values, and if successful, update UI elements
                             if (ulong.TryParse(graphicsCardMemoryStr, out ulong graphicsCardMemory))
                             {
-                                txtgraphicsCardMemory.Text = $"{graphicsCardMemory / (1024 * 1024)} MB";
+                                lblgraphicsCardMemory.Text = $"{graphicsCardMemory / (1024 * 1024)} MB";
                             }
                             else
                             {
                                 // Handle the case where parsing fails
-                                txtgraphicsCardMemory.Text = "N/A";
+                                lblgraphicsCardMemory.Text = "N/A";
                             }
 
-                            txtgraphicsCardName.Text = graphicsCardName;
+                            lblgraphicsCardName.Text = graphicsCardName;
                         }
                         else
                         {
                             // Handle the case where properties are null
-                            txtgraphicsCardMemory.Text = "N/A";
-                            txtgraphicsCardName.Text = "N/A";
+                            lblgraphicsCardMemory.Text = "N/A";
+                            lblgraphicsCardName.Text = "N/A";
                         }
                     }
                 }
 
             }
-            
 
         }
 
