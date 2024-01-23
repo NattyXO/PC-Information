@@ -50,7 +50,7 @@ namespace pc_information
                 ManagementObjectCollection biosCollection = searcher1.Get();
                 foreach (ManagementObject bios in biosCollection)
                 {
-                    lblBIOS.Text = $"{bios["Version"]}";
+                    lblBIOSVendor.Text = $"{bios["Version"]}";
                 }
 
                 // Retrieve DirectX version from the registry
@@ -198,42 +198,43 @@ namespace pc_information
                 ManagementObjectSearcher gpuSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
                 ManagementObjectCollection gpuCollection = gpuSearcher.Get();
 
-                foreach (ManagementObject gpu in gpuCollection)
+                
+
+            }
+
+            // Retrieve DirectX version from the registry
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS"))
+            {
+                if (key != null)
                 {
-                    // Check if the object is not null before accessing its properties
-                    if (gpu != null)
+                    object BIOSReleaseDate = key.GetValue("BIOSReleaseDate");
+                    if (BIOSReleaseDate != null)
                     {
-                        object adapterRAMObj = gpu["AdapterRAM"];
-                        object captionObj = gpu["Caption"];
-
-                        // Check if the properties are not null before converting and using them
-                        if (adapterRAMObj != null && captionObj != null)
-                        {
-                            string graphicsCardMemoryStr = adapterRAMObj.ToString();
-                            string graphicsCardName = captionObj.ToString();
-
-                            // Try to parse the values, and if successful, update UI elements
-                            if (ulong.TryParse(graphicsCardMemoryStr, out ulong graphicsCardMemory))
-                            {
-                                lblGraphicsTotalMemory.Text = $"{graphicsCardMemory / (1024 * 1024)} MB";
-                            }
-                            else
-                            {
-                                // Handle the case where parsing fails
-                                lblGraphicsTotalMemory.Text = "N/A";
-                            }
-
-                            lblgraphicsCardName.Text = graphicsCardName;
-                        }
-                        else
-                        {
-                            // Handle the case where properties are null
-                            lblGraphicsTotalMemory.Text = "N/A";
-                            lblgraphicsCardName.Text = "N/A";
-                        }
+                        lblBIOSReleaseDate.Text = $"{BIOSReleaseDate.ToString()}";
+                    }
+                    object BIOSVendor = key.GetValue("BIOSVendor");
+                    if (BIOSVendor != null)
+                    {
+                        lblBIOSVendor.Text = $"{BIOSVendor.ToString()}";
+                    }
+                    object BIOSVersion = key.GetValue("BIOSVersion");
+                    if (BIOSVersion != null)
+                    {
+                        lblBIOSVersion.Text = $"{BIOSVersion.ToString()}";
                     }
                 }
-
+            }
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0"))
+            {
+                if (key != null)
+                {
+                    object Identifier = key.GetValue("Identifier");
+                    if (Identifier != null)
+                    {
+                        lblProcessorFamily.Text = $"{Identifier.ToString()}";
+                    }
+                   
+                }
             }
 
         }
