@@ -4,6 +4,9 @@ using System.Management;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace pc_information
 {
@@ -236,8 +239,157 @@ namespace pc_information
                    
                 }
             }
+            try
+            {
+                // PowerShell command to get GPU information
+                string powerShellCommand = "Get-CimInstance win32_VideoController | Select-Object Name, DeviceID, VideoProcessor,AdapterDACType, AdapterCompatibility, VideoModeDescription, MaxRefreshRate, CurrentRefreshRate, DriverVersion,Status";
+
+                // Create a process to run PowerShell
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "powershell.exe",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{powerShellCommand}\""
+                };
+
+                using (Process process = new Process { StartInfo = psi })
+                {
+                    process.Start();
+
+                    // Read the output of the PowerShell command
+                    string output = process.StandardOutput.ReadToEnd().Trim();
+
+                    process.WaitForExit();
+
+                    // Split the output into lines
+                    string[] gpuLines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                    // Display GPU information in separate labels
+                    if (gpuLines.Length > 0)
+                    {
+                        lblGraphicsCardName.Text = $"{gpuLines[0]}";
+                        if (gpuLines.Length > 1)
+                            lblDeviceID.Text = $"{gpuLines[1]}";
+
+                        if (gpuLines.Length > 2)
+                            lblVideoProcessor.Text = $"{gpuLines[2]}";
+                        if (gpuLines.Length > 3)
+                            lblDacType.Text = $"{gpuLines[3]}";
+                        if (gpuLines.Length > 4)
+                            lblAdapterCompatibility.Text = $"{gpuLines[4]}";
+                        if (gpuLines.Length > 5)
+                            lblVideoModeDescription.Text = $"{gpuLines[5]}";
+
+                        if (gpuLines.Length > 6)
+                            lblMaxRefreshRate.Text = $"{gpuLines[6]}";
+
+                        if (gpuLines.Length > 7)
+                            lblCurrentRefreshRate.Text = $"{gpuLines[7]}";
+
+                        if (gpuLines.Length > 8)
+                            lblDriverVersion.Text = $"{gpuLines[8]}";
+                        if (gpuLines.Length > 9)
+                            lblStatus.Text = $"{gpuLines[9]}";
+                        // Add similar code for other properties you want to display
+
+                        // If you have more labels, you can continue the pattern
+                    }
+                    else
+                    {
+                        lblGraphicsCardName.Text = "Graphics Card information not available";
+                    }
+                    // Display GPU information in separate labels
+                    if (gpuLines.Length > 10)  // Start reading from the information of the second GPU
+                    {
+                        lblGraphicsCardName2.Text = $"{gpuLines[10]}";
+
+                        if (gpuLines.Length > 11)
+                            lblDeviceID2.Text = $"{gpuLines[11]}";
+
+                        if (gpuLines.Length > 15)
+                           lblVideoModeDescription2.Text = $"{gpuLines[15]}";
+
+                        if (gpuLines.Length > 16)
+                            lblMaxRefreshRate2.Text = $"{gpuLines[16]}";
+
+                        if (gpuLines.Length > 17)
+                            lblCurrentRefreshRate2.Text = $"{gpuLines[17]}";
+                        if (gpuLines.Length > 18)
+                            lblStatus2.Text = $"{gpuLines[18]}";
+                        if (gpuLines.Length > 19)
+                            lblStatus2.Text = $"{gpuLines[19]}";
+
+                        // If you have more labels, add similar code for other properties you want to display
+                    }
+                    else
+                    {
+                        lblGraphicsCardName2.Text = "Graphics Card information not available";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                // PowerShell command to get sound information
+                string powerShellCommand = "Get-WmiObject Win32_SoundDevice | Select-Object Manufacturer, Name, Status | Format-Table | Out-String -Width 120";
+
+                // Create a process to run PowerShell
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "powershell.exe",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{powerShellCommand}\""
+                };
+
+                using (Process process = new Process { StartInfo = psi })
+                {
+                    process.Start();
+
+                    // Read the output of the PowerShell command
+                    string output = process.StandardOutput.ReadToEnd().Trim();
+
+                    process.WaitForExit();
+
+                    // Split the output into lines
+                    string[] soundLines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                    // Display sound information in separate labels
+                    if (soundLines.Length >= 5)  // Check if there are at least 3 lines (header + 3 properties)
+                    {
+                        // Manufacturer
+                        lblManufacturer.Text = $"{soundLines[2]}";
+
+                        // Name
+                        lblName.Text = $"{soundLines[3]}";
+
+                        // Status
+                        lblStatusSound.Text = $"{soundLines[4]}";
+                    }
+                    else
+                    {
+                        lblManufacturer.Text = "Manufacturer information not available";
+                        lblName.Text = "Name information not available";
+                        lblStatusSound.Text = "Status information not available";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
+       
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -259,15 +411,15 @@ namespace pc_information
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string aboutMessage = "PC Information 2024\n" +
-                "Version 1.0\n" +
-                "© 2024 Ahadu Tech\n"+
-                "Initial Creator Nahu Senay\n"+
+                "Version 2.0\n" +
+                "© 2024 Ahadu Tech\n" +
+                "Initial Creator Nahu Senay\n" +
                 "Enhanced by NattyXO";
 
             MessageBox.Show(aboutMessage, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void githubToolStripMenuItem_Click(object sender, EventArgs e)
+        private void picGithub_Click(object sender, EventArgs e)
         {
             string githublink = "https://github.com/NattyXO";
             Process.Start(githublink);
