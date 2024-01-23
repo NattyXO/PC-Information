@@ -33,7 +33,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label32 = new System.Windows.Forms.Label();
+            this.lblSystemAbout = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -120,6 +120,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.lblInputDevices3 = new System.Windows.Forms.Label();
             this.lblInputDevices1 = new System.Windows.Forms.Label();
             this.lblInputDevices2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -179,7 +180,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabPage1.Controls.Add(this.label32);
+            this.tabPage1.Controls.Add(this.lblSystemAbout);
             this.tabPage1.Controls.Add(this.label29);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label25);
@@ -191,14 +192,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "System";
             // 
-            // label32
+            // lblSystemAbout
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(319, 477);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(407, 13);
-            this.label32.TabIndex = 96;
-            this.label32.Text = "PC Info 1.0, 19041.3636 64-bit Unicode Copyright © Ahadu Tech. all rights reserve" +
+            this.lblSystemAbout.AutoSize = true;
+            this.lblSystemAbout.Location = new System.Drawing.Point(311, 477);
+            this.lblSystemAbout.Name = "lblSystemAbout";
+            this.lblSystemAbout.Size = new System.Drawing.Size(407, 13);
+            this.lblSystemAbout.TabIndex = 96;
+            this.lblSystemAbout.Text = "PC Info 1.0, 19041.3636 64-bit Unicode Copyright © Ahadu Tech. all rights reserve" +
     "d.";
             // 
             // label29
@@ -1086,7 +1087,7 @@
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(42, 16);
+            this.label34.Location = new System.Drawing.Point(31, 16);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(44, 15);
             this.label34.TabIndex = 100;
@@ -1096,36 +1097,46 @@
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(24, 25);
+            this.panel7.Location = new System.Drawing.Point(13, 25);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(498, 242);
+            this.panel7.Size = new System.Drawing.Size(583, 271);
             this.panel7.TabIndex = 99;
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.lblInputDevices3);
             this.panel8.Controls.Add(this.lblInputDevices1);
             this.panel8.Controls.Add(this.lblInputDevices2);
             this.panel8.Location = new System.Drawing.Point(6, 14);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(477, 217);
+            this.panel8.Size = new System.Drawing.Size(562, 246);
             this.panel8.TabIndex = 74;
+            // 
+            // lblInputDevices3
+            // 
+            this.lblInputDevices3.BackColor = System.Drawing.Color.White;
+            this.lblInputDevices3.Location = new System.Drawing.Point(11, 172);
+            this.lblInputDevices3.Name = "lblInputDevices3";
+            this.lblInputDevices3.Size = new System.Drawing.Size(537, 51);
+            this.lblInputDevices3.TabIndex = 70;
+            this.lblInputDevices3.Text = "label38";
             // 
             // lblInputDevices1
             // 
             this.lblInputDevices1.BackColor = System.Drawing.Color.White;
-            this.lblInputDevices1.Location = new System.Drawing.Point(11, 11);
+            this.lblInputDevices1.Location = new System.Drawing.Point(11, 21);
             this.lblInputDevices1.Name = "lblInputDevices1";
-            this.lblInputDevices1.Size = new System.Drawing.Size(447, 46);
+            this.lblInputDevices1.Size = new System.Drawing.Size(537, 51);
             this.lblInputDevices1.TabIndex = 68;
             this.lblInputDevices1.Text = "label38";
             // 
             // lblInputDevices2
             // 
             this.lblInputDevices2.BackColor = System.Drawing.Color.White;
-            this.lblInputDevices2.Location = new System.Drawing.Point(11, 67);
+            this.lblInputDevices2.Location = new System.Drawing.Point(11, 84);
             this.lblInputDevices2.Name = "lblInputDevices2";
-            this.lblInputDevices2.Size = new System.Drawing.Size(447, 124);
+            this.lblInputDevices2.Size = new System.Drawing.Size(537, 76);
             this.lblInputDevices2.TabIndex = 69;
             this.lblInputDevices2.Text = "label38";
             // 
@@ -1175,6 +1186,7 @@
             this.btnSaveInfo.TabIndex = 50;
             this.btnSaveInfo.Text = "Save All Information...";
             this.btnSaveInfo.UseVisualStyleBackColor = true;
+            this.btnSaveInfo.Click += new System.EventHandler(this.btnSaveInfo_Click);
             // 
             // btnExit
             // 
@@ -1271,7 +1283,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label lblComputerName;
-        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label lblSystemAbout;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label25;
@@ -1343,6 +1355,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblInputDevices1;
         private System.Windows.Forms.Label lblInputDevices2;
+        private System.Windows.Forms.Label lblInputDevices3;
     }
 }
 

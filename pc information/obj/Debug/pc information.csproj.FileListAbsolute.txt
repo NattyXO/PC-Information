@@ -16,4 +16,6 @@ C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc informa
 C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\obj\Debug\pc information.csproj.CoreCompileInputs.cache
 C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\obj\Debug\pc information.exe
 C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\obj\Debug\pc information.pdb
-C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\obj\Debug\pc information.csproj.AssemblyReference.cache
+C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\bin\Debug\System.ValueTuple.dll
+C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\bin\Debug\System.ValueTuple.xml
+C:\Users\NattyXO\Downloads\Visual Studio 2017\Projects\pc information\pc information\obj\Debug\pc information.csproj.CopyComplete

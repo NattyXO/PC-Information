@@ -1,0 +1,56 @@
+--- System ---
+DESKTOP-JLPQPGE
+NattyXO
+Microsoft Windows NT 6.2.9200.0
+Microsoft Windows 10 Pro 10.0.19045
+Win32NT
+HP ProBook 4540s
+Hewlett-Packard
+4.09.00.0904
+Processor Intel(R) Core(TM) i7-3632QM CPU
+Intel64 Family 6 Model 58 Stepping 9
+2.20 GHz
+4
+8
+7 GB
+2 GB
+11 GB
+2 GB
+3.50 GB
+Hewlett-Packard
+68IRR Ver. F.68
+04/11/2019
+True
+True
+
+--- Display ---
+Name                 : Intel(R) HD Graphics 4000
+VideoModeDescription : 1366 x 768 x 4294967296 colors
+VideoProcessor       : Intel(R) HD Graphics Family
+DeviceID             : VideoController1
+AdapterCompatibility : Intel Corporation
+MaxRefreshRate       : 60
+CurrentRefreshRate   : 40
+DriverVersion        : 10.18.10.5161
+Status               : OK
+Name                 : AMD Radeon HD 7500M/7600M Series
+DeviceID             : VideoController2
+MaxRefreshRate       : 60
+VideoModeDescription : 1366 x 768 x 4294967296 colors
+Status               : Unknown
+
+--- Sound ---
+Intel(R) Corporation Intel(R) Display Audio       OK    
+Microsoft            High Definition Audio Device OK    
+FxSound              FxSound Audio Enhancer       OK
+
+--- Input ---
+DeviceID                  Manufacturer Description                  Status
+--------                  ------------ -----------                  ------
+ACPI\SYN0197\4&20FFC99C&0 Synaptics    Synaptics PS/2 Port TouchPad OK
+DeviceID                                                              Caption                                           
+--------                                                              -------                                           
+ACPI\HPQ6001\2&DABA3FF&0                                              HP Wireless Button Driver                         
+{A87C2E0F-9A46-46B8-8EC4-E33355FBE1F7}\KEYBOARDFILTER\5&11AAEAF0&0&01 Keyboard_Filter_01                                
+ACPI\HPQ8001\4&20FFC99C&0                                             Standard 101/102-Key or Microsoft Natural PS/2 ...
+

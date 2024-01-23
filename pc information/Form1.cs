@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace pc_information
 {
@@ -432,37 +433,29 @@ namespace pc_information
             try
             {
                 // PowerShell command to get input devices information
-                string powerShellCommand = "Get-WmiObject Win32_PnPEntity | Where-Object { $_.Caption -like '*keyboard*' -or $_.Caption -like '*wireless button*' } | Select-Object DeviceID, Caption, Status | Format-Table | Out-String -Width 120";
+                string keyboardCommand = "Get-WmiObject Win32_PnPEntity | Where-Object { $_.Caption -like '*keyboard*' } | Select-Object DeviceID, Caption, Status | Format-Table | Out-String -Width 120";
+                string wirelessButtonCommand = "Get-WmiObject Win32_PnPEntity | Where-Object { $_.Caption -like '*wireless button*' } | Select-Object DeviceID, Caption, Status | Format-Table | Out-String -Width 120";
 
-                // Create a process to run PowerShell
-                ProcessStartInfo psi = new ProcessStartInfo
+                string keyboardOutput = ExecutePowerShellCommand(keyboardCommand);
+                string wirelessButtonOutput = ExecutePowerShellCommand(wirelessButtonCommand);
+
+                // Display input devices information in lblInputDevices2 and lblInputDevices3
+                if (!string.IsNullOrEmpty(keyboardOutput))
                 {
-                    FileName = "powershell.exe",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{powerShellCommand}\""
-                };
-
-                using (Process process = new Process { StartInfo = psi })
+                    lblInputDevices2.Text = keyboardOutput;
+                }
+                else
                 {
-                    process.Start();
+                    lblInputDevices2.Text = "Keyboard information not available";
+                }
 
-                    // Read the output of the PowerShell command
-                    string output = process.StandardOutput.ReadToEnd().Trim();
-
-                    process.WaitForExit();
-
-                    // Display input devices information in lblInputDevices
-                    if (!string.IsNullOrEmpty(output))
-                    {
-                        lblInputDevices2.Text = output;
-                    }
-                    else
-                    {
-                        lblInputDevices2.Text = "Input devices information not available";
-                    }
+                if (!string.IsNullOrEmpty(wirelessButtonOutput))
+                {
+                    lblInputDevices3.Text = wirelessButtonOutput;
+                }
+                else
+                {
+                    lblInputDevices3.Text = "Wireless button information not available";
                 }
             }
             catch (Exception ex)
@@ -470,24 +463,34 @@ namespace pc_information
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // Helper method to execute PowerShell command
+           
         }
-       
+        private string ExecutePowerShellCommand(string command)
+        {
+            using (Process process = new Process())
+            {
+                process.StartInfo.FileName = "powershell.exe";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{command}\"";
+
+                process.Start();
+
+                // Read the output of the PowerShell command
+                string output = process.StandardOutput.ReadToEnd().Trim();
+
+                process.WaitForExit();
+
+                return output;
+            }
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            const string message =
-                "Would you like to close?";
-            const string caption = "Information";
-            var result = MessageBox.Show(message, caption,
-                                    MessageBoxButtons.YesNo,
-                                    MessageBoxIcon.Question);
-
-            //if the no button was pressed...
-            if (result == DialogResult.Yes)
-            {
-                //cancel the Closur of the form.
                 Application.Exit();
-            }
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -535,5 +538,116 @@ namespace pc_information
         {
             btnNextpage.Enabled = (tabControl1.SelectedIndex < tabControl1.TabCount - 1);
         }
+
+        private void btnSaveInfo_Click(object sender, EventArgs e)
+        {
+            // Create a StringBuilder to store the information
+            StringBuilder pcInfoStringBuilder = new StringBuilder();
+
+            // Define the labels for each section
+            List<(string, Label)> systemLabels = new List<(string, Label)>
+    {
+        ("Computer Name: ", lblComputerName),
+        ("User Name: ", lblUserName),
+        ("OS Version: ", lblVersion),
+        ("Operating System: ", lblOperatingSystem),
+        ("OS Platform: ", lbloperatingSystemPlatform),
+        ("System Model: ", lblSystemModel),
+        ("Base Board Manufacture: ", lblBaseBoardManufacture),
+        ("DirectX Version: ", lblDirectXVersion),
+        ("Processor: ", lblprocessor),
+        ("Processor Family: ", lblProcessorFamily),
+        ("Max Clock Speed: ", lblMaxClockSpeed),
+        ("Number Of Cores: ", lblNumberOfCores),
+        ("Number Of Logical Processors: ", lblNumberOfLogicalProcessors),
+        ("Installed Physical Memory: ", lblinstalledPhysicalMemory),
+        ("Available Physical Memory: ", lblavailablePhysicalMemory),
+        ("Total Virtual Memory: ", lbltotalVirtualMemory),
+        ("Available Virtual Memory: ", lblavailableVirtualMemory),
+        ("Page File Space: ", lblpageFileSpace),
+        ("BIOS Vendor: ", lblBIOSVendor),
+        ("BIOS Version: ", lblBIOSVersion),
+        ("BIOS Release Date: ", lblBIOSReleaseDate),
+        ("64-Bit OS: ", lblBitOS),
+        ("64-Bit Process: ", lblBitProcess)
+    };
+
+            List<(string, Label)> displayLabels = new List<(string, Label)>
+    {
+        ("Graphics Card Name 1\n", lblGraphicsCardName),
+        ("", lblVideoModeDescription),
+        ("", lblVideoProcessor),
+        ("", lblDeviceID),
+        ("", lblAdapterCompatibility),
+        ("", lblMaxRefreshRate),
+        ("", lblCurrentRefreshRate),
+        ("", lblDriverVersion),
+        ("", lblStatus),
+        ("\nGraphics Card Name 2 \n", lblGraphicsCardName2),
+        ("", lblDeviceID2),
+        ("", lblMaxRefreshRate2),
+        ("", lblVideoModeDescription2),
+        ("", lblStatus2)
+    };
+
+            List<(string, Label)> soundLabels = new List<(string, Label)>
+    {
+        ("", lblManufacturer),
+        ("", lblName),
+        ("", lblStatusSound)
+    };
+
+            List<(string, Label)> inputLabels = new List<(string, Label)>
+    {
+        ("Input Devices 1: \n", lblInputDevices1),
+        ("\nInput Devices 2: \n", lblInputDevices2),
+        ("\nInput Devices 3: \n", lblInputDevices3),
+        ("\n\n\n", lblSystemAbout)
+    };
+
+            // Add section headers and labels to the StringBuilder
+            AppendSection(pcInfoStringBuilder, "--- System ---", systemLabels);
+            AppendSection(pcInfoStringBuilder, "--- Display ---", displayLabels);
+            AppendSection(pcInfoStringBuilder, "--- Sound ---", soundLabels);
+            AppendSection(pcInfoStringBuilder, "--- Input ---", inputLabels);
+
+            // Save the information to a text file on the desktop
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = Path.Combine(desktopPath, "PC_Info.txt");
+            SaveToFile(pcInfoStringBuilder.ToString(), filePath);
+        }
+
+        private void AppendSection(StringBuilder stringBuilder, string sectionHeader, List<(string, Label)> labels)
+        {
+            // Append the section header
+            stringBuilder.AppendLine(sectionHeader);
+
+            // Iterate through labels and append their names and values
+            foreach ((string labelName, Label label) in labels)
+            {
+                stringBuilder.AppendLine($"{labelName}{label.Text}");
+            }
+
+            // Add a separator between sections
+            stringBuilder.AppendLine();
+        }
+
+        private void SaveToFile(string content, string filePath)
+        {
+            // Save content to the specified file path
+            try
+            {
+                // Write the content to the file
+                File.WriteAllText(filePath, content);
+
+                MessageBox.Show($"PC information saved to {filePath}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
     }
 }
