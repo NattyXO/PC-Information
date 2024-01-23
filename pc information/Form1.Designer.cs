@@ -87,8 +87,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblCurrentRefreshRate2 = new System.Windows.Forms.Label();
+            this.lblStatus2 = new System.Windows.Forms.Label();
+            this.lblVideoModeDescription2 = new System.Windows.Forms.Label();
+            this.lblMaxRefreshRate2 = new System.Windows.Forms.Label();
+            this.lblDeviceID2 = new System.Windows.Forms.Label();
+            this.lblGraphicsCardName2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblDeviceID = new System.Windows.Forms.Label();
+            this.lblDriverVersion = new System.Windows.Forms.Label();
+            this.lblCurrentRefreshRate = new System.Windows.Forms.Label();
+            this.lblMaxRefreshRate = new System.Windows.Forms.Label();
             this.lblDacType = new System.Windows.Forms.Label();
             this.lblVideoModeDescription = new System.Windows.Forms.Label();
             this.lblVideoProcessor = new System.Windows.Forms.Label();
@@ -96,45 +108,41 @@
             this.lblAdapterCompatibility = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lblStatusSound = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblManufacturer = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblInputDevices1 = new System.Windows.Forms.Label();
+            this.lblInputDevices2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picGithub = new System.Windows.Forms.PictureBox();
             this.btnNextpage = new System.Windows.Forms.Button();
             this.btnSaveInfo = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblMaxRefreshRate = new System.Windows.Forms.Label();
-            this.lblDeviceID = new System.Windows.Forms.Label();
-            this.lblDriverVersion = new System.Windows.Forms.Label();
-            this.lblCurrentRefreshRate = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblVideoModeDescription2 = new System.Windows.Forms.Label();
-            this.lblDeviceID2 = new System.Windows.Forms.Label();
-            this.lblGraphicsCardName2 = new System.Windows.Forms.Label();
-            this.lblMaxRefreshRate2 = new System.Windows.Forms.Label();
-            this.lblStatus2 = new System.Windows.Forms.Label();
-            this.lblCurrentRefreshRate2 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.lblManufacturer = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblStatusSound = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGithub)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -166,6 +174,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(740, 519);
             this.tabControl1.TabIndex = 31;
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
             // 
@@ -774,6 +783,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Display";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(398, 14);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(44, 15);
+            this.label17.TabIndex = 98;
+            this.label17.Text = "Device";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -784,6 +804,74 @@
             this.label12.Size = new System.Drawing.Size(44, 15);
             this.label12.TabIndex = 96;
             this.label12.Text = "Device";
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.lblCurrentRefreshRate2);
+            this.panel5.Controls.Add(this.lblStatus2);
+            this.panel5.Controls.Add(this.lblVideoModeDescription2);
+            this.panel5.Controls.Add(this.lblMaxRefreshRate2);
+            this.panel5.Controls.Add(this.lblDeviceID2);
+            this.panel5.Controls.Add(this.lblGraphicsCardName2);
+            this.panel5.Location = new System.Drawing.Point(380, 23);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(342, 289);
+            this.panel5.TabIndex = 97;
+            // 
+            // lblCurrentRefreshRate2
+            // 
+            this.lblCurrentRefreshRate2.AutoSize = true;
+            this.lblCurrentRefreshRate2.Location = new System.Drawing.Point(19, 127);
+            this.lblCurrentRefreshRate2.Name = "lblCurrentRefreshRate2";
+            this.lblCurrentRefreshRate2.Size = new System.Drawing.Size(107, 13);
+            this.lblCurrentRefreshRate2.TabIndex = 86;
+            this.lblCurrentRefreshRate2.Text = "Current Refresh Rate";
+            // 
+            // lblStatus2
+            // 
+            this.lblStatus2.AutoSize = true;
+            this.lblStatus2.Location = new System.Drawing.Point(19, 154);
+            this.lblStatus2.Name = "lblStatus2";
+            this.lblStatus2.Size = new System.Drawing.Size(43, 13);
+            this.lblStatus2.TabIndex = 85;
+            this.lblStatus2.Text = "Status2";
+            // 
+            // lblVideoModeDescription2
+            // 
+            this.lblVideoModeDescription2.AutoSize = true;
+            this.lblVideoModeDescription2.Location = new System.Drawing.Point(19, 100);
+            this.lblVideoModeDescription2.Name = "lblVideoModeDescription2";
+            this.lblVideoModeDescription2.Size = new System.Drawing.Size(130, 13);
+            this.lblVideoModeDescription2.TabIndex = 76;
+            this.lblVideoModeDescription2.Text = "lblVideoModeDescription2";
+            // 
+            // lblMaxRefreshRate2
+            // 
+            this.lblMaxRefreshRate2.AutoSize = true;
+            this.lblMaxRefreshRate2.Location = new System.Drawing.Point(19, 73);
+            this.lblMaxRefreshRate2.Name = "lblMaxRefreshRate2";
+            this.lblMaxRefreshRate2.Size = new System.Drawing.Size(103, 13);
+            this.lblMaxRefreshRate2.TabIndex = 72;
+            this.lblMaxRefreshRate2.Text = "lblMaxRefreshRate2";
+            // 
+            // lblDeviceID2
+            // 
+            this.lblDeviceID2.AutoSize = true;
+            this.lblDeviceID2.Location = new System.Drawing.Point(19, 46);
+            this.lblDeviceID2.Name = "lblDeviceID2";
+            this.lblDeviceID2.Size = new System.Drawing.Size(68, 13);
+            this.lblDeviceID2.TabIndex = 71;
+            this.lblDeviceID2.Text = "lblDeviceID2";
+            // 
+            // lblGraphicsCardName2
+            // 
+            this.lblGraphicsCardName2.AutoSize = true;
+            this.lblGraphicsCardName2.Location = new System.Drawing.Point(19, 19);
+            this.lblGraphicsCardName2.Name = "lblGraphicsCardName2";
+            this.lblGraphicsCardName2.Size = new System.Drawing.Size(115, 13);
+            this.lblGraphicsCardName2.TabIndex = 68;
+            this.lblGraphicsCardName2.Text = "lblGraphicsCardName2";
             // 
             // panel4
             // 
@@ -802,6 +890,42 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(342, 289);
             this.panel4.TabIndex = 95;
+            // 
+            // lblDeviceID
+            // 
+            this.lblDeviceID.AutoSize = true;
+            this.lblDeviceID.Location = new System.Drawing.Point(17, 127);
+            this.lblDeviceID.Name = "lblDeviceID";
+            this.lblDeviceID.Size = new System.Drawing.Size(62, 13);
+            this.lblDeviceID.TabIndex = 84;
+            this.lblDeviceID.Text = "lblDeviceID";
+            // 
+            // lblDriverVersion
+            // 
+            this.lblDriverVersion.AutoSize = true;
+            this.lblDriverVersion.Location = new System.Drawing.Point(17, 235);
+            this.lblDriverVersion.Name = "lblDriverVersion";
+            this.lblDriverVersion.Size = new System.Drawing.Size(80, 13);
+            this.lblDriverVersion.TabIndex = 83;
+            this.lblDriverVersion.Text = "lblDriverVersion";
+            // 
+            // lblCurrentRefreshRate
+            // 
+            this.lblCurrentRefreshRate.AutoSize = true;
+            this.lblCurrentRefreshRate.Location = new System.Drawing.Point(17, 208);
+            this.lblCurrentRefreshRate.Name = "lblCurrentRefreshRate";
+            this.lblCurrentRefreshRate.Size = new System.Drawing.Size(111, 13);
+            this.lblCurrentRefreshRate.TabIndex = 81;
+            this.lblCurrentRefreshRate.Text = "lblCurrentRefreshRate";
+            // 
+            // lblMaxRefreshRate
+            // 
+            this.lblMaxRefreshRate.AutoSize = true;
+            this.lblMaxRefreshRate.Location = new System.Drawing.Point(17, 181);
+            this.lblMaxRefreshRate.Name = "lblMaxRefreshRate";
+            this.lblMaxRefreshRate.Size = new System.Drawing.Size(97, 13);
+            this.lblMaxRefreshRate.TabIndex = 76;
+            this.lblMaxRefreshRate.Text = "lblMaxRefreshRate";
             // 
             // lblDacType
             // 
@@ -870,14 +994,140 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Sound";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(45, 10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 15);
+            this.label19.TabIndex = 98;
+            this.label19.Text = "Device";
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label33);
+            this.panel6.Controls.Add(this.label31);
+            this.panel6.Controls.Add(this.label30);
+            this.panel6.Controls.Add(this.lblStatusSound);
+            this.panel6.Controls.Add(this.lblName);
+            this.panel6.Controls.Add(this.lblManufacturer);
+            this.panel6.Location = new System.Drawing.Point(27, 19);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(428, 158);
+            this.panel6.TabIndex = 97;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(333, 14);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(37, 13);
+            this.label33.TabIndex = 73;
+            this.label33.Text = "Status";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(200, 14);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(35, 13);
+            this.label31.TabIndex = 72;
+            this.label31.Text = "Name";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(32, 14);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(70, 13);
+            this.label30.TabIndex = 71;
+            this.label30.Text = "Manufacturer";
+            // 
+            // lblStatusSound
+            // 
+            this.lblStatusSound.Location = new System.Drawing.Point(3, 117);
+            this.lblStatusSound.Name = "lblStatusSound";
+            this.lblStatusSound.Size = new System.Drawing.Size(400, 35);
+            this.lblStatusSound.TabIndex = 70;
+            this.lblStatusSound.Text = "label38";
+            // 
+            // lblName
+            // 
+            this.lblName.Location = new System.Drawing.Point(3, 82);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(400, 35);
+            this.lblName.TabIndex = 69;
+            this.lblName.Text = "label38";
+            // 
+            // lblManufacturer
+            // 
+            this.lblManufacturer.Location = new System.Drawing.Point(3, 47);
+            this.lblManufacturer.Name = "lblManufacturer";
+            this.lblManufacturer.Size = new System.Drawing.Size(400, 35);
+            this.lblManufacturer.TabIndex = 68;
+            this.lblManufacturer.Text = "label38";
+            // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabPage4.Controls.Add(this.label34);
+            this.tabPage4.Controls.Add(this.panel7);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(732, 493);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Input";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(42, 16);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(44, 15);
+            this.label34.TabIndex = 100;
+            this.label34.Text = "Device";
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Location = new System.Drawing.Point(24, 25);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(498, 242);
+            this.panel7.TabIndex = 99;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.lblInputDevices1);
+            this.panel8.Controls.Add(this.lblInputDevices2);
+            this.panel8.Location = new System.Drawing.Point(6, 14);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(477, 217);
+            this.panel8.TabIndex = 74;
+            // 
+            // lblInputDevices1
+            // 
+            this.lblInputDevices1.BackColor = System.Drawing.Color.White;
+            this.lblInputDevices1.Location = new System.Drawing.Point(11, 11);
+            this.lblInputDevices1.Name = "lblInputDevices1";
+            this.lblInputDevices1.Size = new System.Drawing.Size(447, 46);
+            this.lblInputDevices1.TabIndex = 68;
+            this.lblInputDevices1.Text = "label38";
+            // 
+            // lblInputDevices2
+            // 
+            this.lblInputDevices2.BackColor = System.Drawing.Color.White;
+            this.lblInputDevices2.Location = new System.Drawing.Point(11, 67);
+            this.lblInputDevices2.Name = "lblInputDevices2";
+            this.lblInputDevices2.Size = new System.Drawing.Size(447, 124);
+            this.lblInputDevices2.TabIndex = 69;
+            this.lblInputDevices2.Text = "label38";
             // 
             // panel2
             // 
@@ -904,7 +1154,7 @@
             // btnNextpage
             // 
             this.btnNextpage.FlatAppearance.BorderSize = 0;
-            this.btnNextpage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextpage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextpage.ForeColor = System.Drawing.Color.Black;
             this.btnNextpage.Location = new System.Drawing.Point(266, 5);
             this.btnNextpage.Name = "btnNextpage";
@@ -912,23 +1162,24 @@
             this.btnNextpage.TabIndex = 49;
             this.btnNextpage.Text = "Next Page";
             this.btnNextpage.UseVisualStyleBackColor = true;
+            this.btnNextpage.Click += new System.EventHandler(this.btnNextpage_Click);
             // 
             // btnSaveInfo
             // 
             this.btnSaveInfo.FlatAppearance.BorderSize = 0;
-            this.btnSaveInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveInfo.ForeColor = System.Drawing.Color.Black;
             this.btnSaveInfo.Location = new System.Drawing.Point(424, 5);
             this.btnSaveInfo.Name = "btnSaveInfo";
             this.btnSaveInfo.Size = new System.Drawing.Size(136, 25);
             this.btnSaveInfo.TabIndex = 50;
-            this.btnSaveInfo.Text = "Save All Information";
+            this.btnSaveInfo.Text = "Save All Information...";
             this.btnSaveInfo.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Black;
             this.btnExit.Location = new System.Drawing.Point(582, 5);
             this.btnExit.Name = "btnExit";
@@ -947,197 +1198,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(764, 570);
             this.panel3.TabIndex = 96;
-            // 
-            // lblMaxRefreshRate
-            // 
-            this.lblMaxRefreshRate.AutoSize = true;
-            this.lblMaxRefreshRate.Location = new System.Drawing.Point(17, 181);
-            this.lblMaxRefreshRate.Name = "lblMaxRefreshRate";
-            this.lblMaxRefreshRate.Size = new System.Drawing.Size(97, 13);
-            this.lblMaxRefreshRate.TabIndex = 76;
-            this.lblMaxRefreshRate.Text = "lblMaxRefreshRate";
-            // 
-            // lblDeviceID
-            // 
-            this.lblDeviceID.AutoSize = true;
-            this.lblDeviceID.Location = new System.Drawing.Point(17, 127);
-            this.lblDeviceID.Name = "lblDeviceID";
-            this.lblDeviceID.Size = new System.Drawing.Size(62, 13);
-            this.lblDeviceID.TabIndex = 84;
-            this.lblDeviceID.Text = "lblDeviceID";
-            // 
-            // lblDriverVersion
-            // 
-            this.lblDriverVersion.AutoSize = true;
-            this.lblDriverVersion.Location = new System.Drawing.Point(17, 235);
-            this.lblDriverVersion.Name = "lblDriverVersion";
-            this.lblDriverVersion.Size = new System.Drawing.Size(80, 13);
-            this.lblDriverVersion.TabIndex = 83;
-            this.lblDriverVersion.Text = "lblDriverVersion";
-            // 
-            // lblCurrentRefreshRate
-            // 
-            this.lblCurrentRefreshRate.AutoSize = true;
-            this.lblCurrentRefreshRate.Location = new System.Drawing.Point(17, 208);
-            this.lblCurrentRefreshRate.Name = "lblCurrentRefreshRate";
-            this.lblCurrentRefreshRate.Size = new System.Drawing.Size(111, 13);
-            this.lblCurrentRefreshRate.TabIndex = 81;
-            this.lblCurrentRefreshRate.Text = "lblCurrentRefreshRate";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(398, 14);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 15);
-            this.label17.TabIndex = 98;
-            this.label17.Text = "Device";
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.lblCurrentRefreshRate2);
-            this.panel5.Controls.Add(this.lblStatus2);
-            this.panel5.Controls.Add(this.lblVideoModeDescription2);
-            this.panel5.Controls.Add(this.lblMaxRefreshRate2);
-            this.panel5.Controls.Add(this.lblDeviceID2);
-            this.panel5.Controls.Add(this.lblGraphicsCardName2);
-            this.panel5.Location = new System.Drawing.Point(380, 23);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(342, 289);
-            this.panel5.TabIndex = 97;
-            // 
-            // lblVideoModeDescription2
-            // 
-            this.lblVideoModeDescription2.AutoSize = true;
-            this.lblVideoModeDescription2.Location = new System.Drawing.Point(19, 100);
-            this.lblVideoModeDescription2.Name = "lblVideoModeDescription2";
-            this.lblVideoModeDescription2.Size = new System.Drawing.Size(130, 13);
-            this.lblVideoModeDescription2.TabIndex = 76;
-            this.lblVideoModeDescription2.Text = "lblVideoModeDescription2";
-            // 
-            // lblDeviceID2
-            // 
-            this.lblDeviceID2.AutoSize = true;
-            this.lblDeviceID2.Location = new System.Drawing.Point(19, 46);
-            this.lblDeviceID2.Name = "lblDeviceID2";
-            this.lblDeviceID2.Size = new System.Drawing.Size(68, 13);
-            this.lblDeviceID2.TabIndex = 71;
-            this.lblDeviceID2.Text = "lblDeviceID2";
-            // 
-            // lblGraphicsCardName2
-            // 
-            this.lblGraphicsCardName2.AutoSize = true;
-            this.lblGraphicsCardName2.Location = new System.Drawing.Point(19, 19);
-            this.lblGraphicsCardName2.Name = "lblGraphicsCardName2";
-            this.lblGraphicsCardName2.Size = new System.Drawing.Size(115, 13);
-            this.lblGraphicsCardName2.TabIndex = 68;
-            this.lblGraphicsCardName2.Text = "lblGraphicsCardName2";
-            // 
-            // lblMaxRefreshRate2
-            // 
-            this.lblMaxRefreshRate2.AutoSize = true;
-            this.lblMaxRefreshRate2.Location = new System.Drawing.Point(19, 73);
-            this.lblMaxRefreshRate2.Name = "lblMaxRefreshRate2";
-            this.lblMaxRefreshRate2.Size = new System.Drawing.Size(103, 13);
-            this.lblMaxRefreshRate2.TabIndex = 72;
-            this.lblMaxRefreshRate2.Text = "lblMaxRefreshRate2";
-            // 
-            // lblStatus2
-            // 
-            this.lblStatus2.AutoSize = true;
-            this.lblStatus2.Location = new System.Drawing.Point(19, 154);
-            this.lblStatus2.Name = "lblStatus2";
-            this.lblStatus2.Size = new System.Drawing.Size(43, 13);
-            this.lblStatus2.TabIndex = 85;
-            this.lblStatus2.Text = "Status2";
-            // 
-            // lblCurrentRefreshRate2
-            // 
-            this.lblCurrentRefreshRate2.AutoSize = true;
-            this.lblCurrentRefreshRate2.Location = new System.Drawing.Point(19, 127);
-            this.lblCurrentRefreshRate2.Name = "lblCurrentRefreshRate2";
-            this.lblCurrentRefreshRate2.Size = new System.Drawing.Size(107, 13);
-            this.lblCurrentRefreshRate2.TabIndex = 86;
-            this.lblCurrentRefreshRate2.Text = "Current Refresh Rate";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(45, 10);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 15);
-            this.label19.TabIndex = 98;
-            this.label19.Text = "Device";
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label33);
-            this.panel6.Controls.Add(this.label31);
-            this.panel6.Controls.Add(this.label30);
-            this.panel6.Controls.Add(this.lblStatusSound);
-            this.panel6.Controls.Add(this.lblName);
-            this.panel6.Controls.Add(this.lblManufacturer);
-            this.panel6.Location = new System.Drawing.Point(27, 19);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(428, 158);
-            this.panel6.TabIndex = 97;
-            // 
-            // lblManufacturer
-            // 
-            this.lblManufacturer.Location = new System.Drawing.Point(3, 47);
-            this.lblManufacturer.Name = "lblManufacturer";
-            this.lblManufacturer.Size = new System.Drawing.Size(400, 35);
-            this.lblManufacturer.TabIndex = 68;
-            this.lblManufacturer.Text = "label38";
-            // 
-            // lblName
-            // 
-            this.lblName.Location = new System.Drawing.Point(3, 82);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(400, 35);
-            this.lblName.TabIndex = 69;
-            this.lblName.Text = "label38";
-            // 
-            // lblStatusSound
-            // 
-            this.lblStatusSound.Location = new System.Drawing.Point(3, 117);
-            this.lblStatusSound.Name = "lblStatusSound";
-            this.lblStatusSound.Size = new System.Drawing.Size(400, 35);
-            this.lblStatusSound.TabIndex = 70;
-            this.lblStatusSound.Text = "label38";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(32, 14);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(70, 13);
-            this.label30.TabIndex = 71;
-            this.label30.Text = "Manufacturer";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(200, 14);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(35, 13);
-            this.label31.TabIndex = 72;
-            this.label31.Text = "Name";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(333, 14);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(37, 13);
-            this.label33.TabIndex = 73;
-            this.label33.Text = "Status";
             // 
             // Form1
             // 
@@ -1163,17 +1223,21 @@
             this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picGithub)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1274,6 +1338,11 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblInputDevices1;
+        private System.Windows.Forms.Label lblInputDevices2;
     }
 }
 

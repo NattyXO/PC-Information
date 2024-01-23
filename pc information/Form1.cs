@@ -22,6 +22,7 @@ namespace pc_information
         public Form1()
         {
             InitializeComponent();
+            tabControl1.SelectedIndexChanged += tabControl1_TabIndexChanged;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -387,6 +388,87 @@ namespace pc_information
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            try
+            {
+                // PowerShell command to get input devices information
+                string powerShellCommand = "Get-WmiObject Win32_PointingDevice | Select-Object DeviceID, Manufacturer, Description, Status | Format-Table | Out-String -Width 120";
+
+                // Create a process to run PowerShell
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "powershell.exe",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{powerShellCommand}\""
+                };
+
+                using (Process process = new Process { StartInfo = psi })
+                {
+                    process.Start();
+
+                    // Read the output of the PowerShell command
+                    string output = process.StandardOutput.ReadToEnd().Trim();
+
+                    process.WaitForExit();
+
+                    // Display input devices information in lblInputDevices
+                    if (!string.IsNullOrEmpty(output))
+                    {
+                        lblInputDevices1.Text = output;
+                    }
+                    else
+                    {
+                        lblInputDevices1.Text = "Input devices information not available";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                // PowerShell command to get input devices information
+                string powerShellCommand = "Get-WmiObject Win32_PnPEntity | Where-Object { $_.Caption -like '*keyboard*' -or $_.Caption -like '*wireless button*' } | Select-Object DeviceID, Caption, Status | Format-Table | Out-String -Width 120";
+
+                // Create a process to run PowerShell
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "powershell.exe",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    Arguments = $"-NoProfile -ExecutionPolicy unrestricted -Command \"{powerShellCommand}\""
+                };
+
+                using (Process process = new Process { StartInfo = psi })
+                {
+                    process.Start();
+
+                    // Read the output of the PowerShell command
+                    string output = process.StandardOutput.ReadToEnd().Trim();
+
+                    process.WaitForExit();
+
+                    // Display input devices information in lblInputDevices
+                    if (!string.IsNullOrEmpty(output))
+                    {
+                        lblInputDevices2.Text = output;
+                    }
+                    else
+                    {
+                        lblInputDevices2.Text = "Input devices information not available";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
        
@@ -432,6 +514,26 @@ namespace pc_information
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void btnNextpage_Click(object sender, EventArgs e)
+        {
+            int nextTabIndex = tabControl1.SelectedIndex + 1;
+
+            if (nextTabIndex < tabControl1.TabCount)
+            {
+                tabControl1.SelectedIndex = nextTabIndex;
+                UpdateNextPageButtonVisibility();
+            }
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            UpdateNextPageButtonVisibility();
+        }
+        private void UpdateNextPageButtonVisibility()
+        {
+            btnNextpage.Enabled = (tabControl1.SelectedIndex < tabControl1.TabCount - 1);
         }
     }
 }
