@@ -1154,7 +1154,7 @@
             // picGithub
             // 
             this.picGithub.Image = global::pc_information.Properties.Resources.icons8_github_500;
-            this.picGithub.Location = new System.Drawing.Point(3, 2);
+            this.picGithub.Location = new System.Drawing.Point(3, 3);
             this.picGithub.Name = "picGithub";
             this.picGithub.Size = new System.Drawing.Size(32, 28);
             this.picGithub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1222,9 +1222,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(764, 593);
+            this.MinimumSize = new System.Drawing.Size(764, 593);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "PC Information";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Management;
-using System.IO;
-using System.Diagnostics;
-using Microsoft.Win32;
-using System.Text.RegularExpressions;
-using System.Linq;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Management;
 using System.Text;
+using System.Windows.Forms;
 
 namespace pc_information
 {
@@ -33,10 +31,6 @@ namespace pc_information
             getInfo();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-           
-        }
         public void getInfo()
         {
 
@@ -132,7 +126,7 @@ namespace pc_information
                     ulong totalVirtualMemory = Convert.ToUInt64(memory["TotalVirtualMemorySize"]);
                     ulong availableVirtualMemory = Convert.ToUInt64(memory["FreeVirtualMemory"]);
 
-                   lblinstalledPhysicalMemory.Text = $"{totalPhysicalMemory / (1024 * 1024)} GB"; // Convert bytes to megabytes
+                    lblinstalledPhysicalMemory.Text = $"{totalPhysicalMemory / (1024 * 1024)} GB"; // Convert bytes to megabytes
                     lblavailablePhysicalMemory.Text = $"{freePhysicalMemory / (1024 * 1024)} GB";
                     lbltotalVirtualMemory.Text = $"{totalVirtualMemory / (1024 * 1024)} GB";
                     lblavailableVirtualMemory.Text = $"{availableVirtualMemory / (1024 * 1024)} GB";
@@ -159,8 +153,6 @@ namespace pc_information
                     // Handle the case where the page file does not exist
                     lblpageFileSpace.Text = "Page file not found";
                 }
-
-
                 // Baseboard information
                 string baseboardManufacturer = obj["Manufacturer"].ToString();
 
@@ -195,16 +187,10 @@ namespace pc_information
                         break; // Assuming you only want information from the first processor
                     }
                 }
-
-
                 lblBaseBoardManufacture.Text = baseboardManufacturer;
-
                 // Graphics card information
                 ManagementObjectSearcher gpuSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
                 ManagementObjectCollection gpuCollection = gpuSearcher.Get();
-
-                
-
             }
 
             // Retrieve DirectX version from the registry
@@ -238,7 +224,7 @@ namespace pc_information
                     {
                         lblProcessorFamily.Text = $"{Identifier.ToString()}";
                     }
-                   
+
                 }
             }
             try
@@ -295,9 +281,7 @@ namespace pc_information
                             lblDriverVersion.Text = $"{gpuLines[8]}";
                         if (gpuLines.Length > 9)
                             lblStatus.Text = $"{gpuLines[9]}";
-                        // Add similar code for other properties you want to display
-
-                        // If you have more labels, you can continue the pattern
+                        
                     }
                     else
                     {
@@ -312,7 +296,7 @@ namespace pc_information
                             lblDeviceID2.Text = $"{gpuLines[11]}";
 
                         if (gpuLines.Length > 15)
-                           lblVideoModeDescription2.Text = $"{gpuLines[15]}";
+                            lblVideoModeDescription2.Text = $"{gpuLines[15]}";
 
                         if (gpuLines.Length > 16)
                             lblMaxRefreshRate2.Text = $"{gpuLines[16]}";
@@ -462,9 +446,6 @@ namespace pc_information
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Helper method to execute PowerShell command
-           
         }
         private string ExecutePowerShellCommand(string command)
         {
@@ -490,7 +471,7 @@ namespace pc_information
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-                Application.Exit();
+            Application.Exit();
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -647,7 +628,5 @@ namespace pc_information
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
     }
 }
